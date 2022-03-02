@@ -1,9 +1,9 @@
 Section 2. Rolling 30-Day Retention Rate
  
 SELECT 
-    joined AS day_joined, -- The day each player joined the game 
-    COUNT(player_id) AS total_players_joined, -- The total number of players who joined the game for each day
-    SUM(retention_status) AS total_players_retained, -- The total number of players who were retained for each day
+    joined AS day_joined, 
+    COUNT(player_id) AS total_players_joined,
+    SUM(retention_status) AS total_players_retained, 
     ROUND((SUM(retention_status)/COUNT(player_id))* 100, 2)AS ret_rate -- The fractional retention rate for each day 
 FROM (      --  We select the player id, location, and the day they joined for each player
     SELECT
@@ -17,7 +17,7 @@ FROM (      --  We select the player id, location, and the day they joined for e
     FROM 
         `ordinal-tower-341322.sql_project_1.player_info` AS p
     JOIN `ordinal-tower-341322.sql_project_1.matches_info` AS m 
-        ON p.player_id = m.player_id -- Using player.id as the key to join Player and Matches tables from the schema
+        ON p.player_id = m.player_id 
     GROUP BY
         p.joined,
         p.player_id
@@ -32,7 +32,7 @@ Section 3. Rolling 30-Day Retention Rate by location
 
 
 SELECT
-COUNT(player_id) AS total_players_joined, -- The total number of players who joined the game from each location (continent)
+COUNT(player_id) AS total_players_joined, 
   location, -- The different locations (continents)
   ROUND((SUM(retention_status)/COUNT(player_id)) *100, 2) AS ret_rate -- The fractional retention rate for each continent 
 FROM (
@@ -50,7 +50,7 @@ FROM (
         `ordinal-tower-341322.sql_project_1.player_info` AS p
     JOIN `ordinal-tower-341322.sql_project_1.matches_info` AS m 
   ON
-    p.player_id = M.player_id -- Using player.id as the key to join Player and Matches tables from the schema
+    p.player_id = M.player_id 
   GROUP BY
     p.location,
     p.joined,
@@ -70,8 +70,8 @@ ORDER BY
 Section 4. Number of retained players by age 
 
 SELECT
-  COUNT (player_id) AS total_players_joined, -- The total number of players who joined the game for each year of age
-  age,  -- The age of each player                                       
+  COUNT (player_id) AS total_players_joined, 
+  age,                         
   ROUND((SUM(retention_status)/COUNT(player_id)) *100, 2) AS ret_rate -- The fractional retention rate for each year of age
 FROM ( --  We select the player id, location, and the day they joined for each player
   SELECT
@@ -87,7 +87,7 @@ FROM ( --  We select the player id, location, and the day they joined for each p
  FROM `ordinal-tower-341322.sql_project_1.player_info` AS p
     JOIN `ordinal-tower-341322.sql_project_1.matches_info` AS m
 ON
-  p.player_id = m.player_id -- Using player.id as the key to join Player and Matches tables from the schema
+  p.player_id = m.player_id 
   GROUP BY
     P.player_id,
     p.joined,
@@ -102,8 +102,8 @@ Section 5. Average age of players by location
 
 
 SELECT
- location, -- The different locations (continents)
- ROUND(AVG (age), 2) as average_age_of_players --  The average age of players who joined from each continent 
+ location, -- 
+ ROUND(AVG (age), 2) as average_age_of_players 
 FROM
     (SELECT
         p.player_id,
@@ -118,7 +118,7 @@ FROM
     FROM 
         `ordinal-tower-341322.sql_project_1.player_info` AS p
     JOIN `ordinal-tower-341322.sql_project_1.matches_info` AS m 
-        ON p.player_id = m.player_id -- Using player.id as the key to join Player and Matches tables from the schema
+        ON p.player_id = m.player_id 
     GROUP BY p.joined, p.player_id, location, p.age
     ORDER BY location)
      GROUP BY location 
