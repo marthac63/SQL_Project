@@ -102,7 +102,7 @@ Section 5. Average age of players by location
 
 
 SELECT
- location, -- 
+ location, 
  ROUND(AVG (age), 2) as average_age_of_players 
 FROM
     (SELECT
