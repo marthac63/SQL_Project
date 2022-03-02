@@ -1,5 +1,12 @@
 Section 2. Rolling 30-Day Retention Rate - Is it Increasing or Decreasing over the life span of the game? 
- 
+
+/* 
+
+This query gives us a table that has a row for every day in the game's lifespan to 
+determine if retention is decreasing or increasing over the life span of the game 
+
+*/
+
 SELECT 
     joined AS day_joined, -- the day in question 
     COUNT(player_id) AS total_players_joined, -- total number of players joined that day 
@@ -29,7 +36,9 @@ GROUP BY day_joined;
 
 
 Section 3. Rolling 30-Day Retention Rate by location
-
+/*
+This query tells us the location of retained players 
+*/
 
 SELECT
 COUNT(player_id) AS total_players_joined, 
