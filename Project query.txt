@@ -17,7 +17,7 @@ FROM (
         p.player_id,
         p.joined, 
         CASE  -- The case statement will assign a value of '1' for a player who played a match anytime after 30 days of joining and '0' for those players who did not
-            WHEN (MAX(m.day) - min (p.joined) ) > 30 
+            WHEN (MAX(m.day) - min (p.joined) ) >= 30 
             THEN 1
             ELSE 0
         END AS retention_status
@@ -50,7 +50,7 @@ FROM (
     P.joined,
     p.location,
     CASE -- The case statement will assign a value of '1' for a player who played a match anytime after 30 days of joining and '0' for those players who did not
-      WHEN (MAX(m.day) - min (p.joined) ) > 30 THEN 1
+      WHEN (MAX(m.day) - min (p.joined) ) >= 30 THEN 1
     ELSE
     0
   END
@@ -88,7 +88,7 @@ FROM (
     P.joined AS joined,
     P.age AS age,
     CASE -- The case statement will assign a value of '1' for a player who played a match anytime after 30 days of joining and '0' for those players who did not
-      WHEN (MAX(m.day) - min (p.joined) ) > 30 THEN 1
+      WHEN (MAX(m.day) - min (p.joined) ) >= 30 THEN 1
     ELSE
     0
   END
@@ -120,7 +120,7 @@ FROM
         P.joined AS joined,
         P.age,
         CASE -- The case statement will assign a value of '1' for a player who played a match anytime after 30 days of joining and '0' for those players who did not
-            WHEN (MAX(m.day) - min (p.joined) ) > 30
+            WHEN (MAX(m.day) - min (p.joined) ) >= 30
             THEN 1
             ELSE 0
         END AS retention_status
