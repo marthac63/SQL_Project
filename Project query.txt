@@ -1,4 +1,4 @@
-Section 2. Rolling 30-Day Retention Rate
+Section 2. Rolling 30-Day Retention Rate - Is it Increasing or Decreasing over the life span of the game? 
  
 SELECT 
     joined AS day_joined, 
