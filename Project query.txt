@@ -1,9 +1,9 @@
 Section 2. Rolling 30-Day Retention Rate - Is it Increasing or Decreasing over the life span of the game? 
  
 SELECT 
-    joined AS day_joined, 
-    COUNT(player_id) AS total_players_joined,
-    SUM(retention_status) AS total_players_retained, 
+    joined AS day_joined, -- the day in question 
+    COUNT(player_id) AS total_players_joined, -- total number of players joined that day 
+    SUM(retention_status) AS total_players_retained, -- total retained players 
     ROUND((SUM(retention_status)/COUNT(player_id))* 100, 2)AS ret_rate -- The fractional retention rate for each day 
 FROM (    
     SELECT
