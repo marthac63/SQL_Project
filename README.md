@@ -7,7 +7,7 @@ Our client is a mobile game company. As it is the game's one-year anniversary, o
 
 The project also demanded exploration of other important insights that the company could leverage from the analysis. For the secondary objective, we decided to analyze the retention rate by location, average age of players by location, and number of players retained by age.
 
-## 2. ROLLING 30-DAY RETENTION RATE
+## 2. ROLLING 30-DAY RETENTION RATE - IS IT INCREASING OR DECREASING OVER THE LIFESPAN OF THE GAME?
 
 We have written a query that gives us a table that has a row for every day in the game's lifespan, with the following four columns:
 - `day`: The day in question
@@ -41,7 +41,7 @@ There appear to be several significant spikes in player retention (Day 55 and Da
 
 When we compare the retention rate per day with the total number of players who joined that day, we can see that these peaks and declines are corresponding to the number of players. 
 
-## 3. ROLLING 30-DAY RETENTION RATE BY LOCATION
+## 3. DO RETAINED PLAYERS COME FROM CERTAIN LOCATIONS?
 
 [Link](Project%20query.txt) to full query here.
 
@@ -54,7 +54,7 @@ The above graph shows that retention rate is extremely consistent across all con
 We use the same query as in Section 2 but `GROUP BY` and `ORDER BY` `age` to aggregate the `total_players_joined` and `total_players_retained` by each age year as well as to compare the retention rate (i.e. `ret_rate` in the query across different ages). 
 [Link](Project%20query.txt) to full query here.
 
-## 4. NUMBER OF PLAYERS RETAINED BY AGE
+## 4. WHAT IS THE AGE OF OUR PLAYERS AND HOW MANY FROM EACH AGE GROUP ARE BEING RETAINED? 
 
 [Link](/Project%20query.txt) to full query here.
 
@@ -66,7 +66,7 @@ We GROUP BY p.age in the subquery and  we also GROUP BY and ORDER BY age in the 
 
 The game is most popular in the college demographic of 18-22year olds and the company can focus on these key target markets in their strategy and marketing going forward.
 
-## 5. AVERAGE AGE OF PLAYERS BY LOCATION
+## 5. WHAT IS THE AVERAGE AGE OF RETAINED PLAYERS?
 
 [Link](Project%20query.txt) to full query here.
 
