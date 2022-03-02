@@ -5,7 +5,7 @@ SELECT
     COUNT(player_id) AS total_players_joined,
     SUM(retention_status) AS total_players_retained, 
     ROUND((SUM(retention_status)/COUNT(player_id))* 100, 2)AS ret_rate -- The fractional retention rate for each day 
-FROM (      --  We select the player id, location, and the day they joined for each player
+FROM (    
     SELECT
         p.player_id,
         p.joined, 
@@ -73,7 +73,7 @@ SELECT
   COUNT (player_id) AS total_players_joined, 
   age,                         
   ROUND((SUM(retention_status)/COUNT(player_id)) *100, 2) AS ret_rate -- The fractional retention rate for each year of age
-FROM ( --  We select the player id, location, and the day they joined for each player
+FROM ( 
   SELECT
     p.player_id,
     P.joined AS joined,
